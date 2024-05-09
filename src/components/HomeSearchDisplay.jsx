@@ -29,12 +29,6 @@ const HomeSearchDisplay = () => {
   const end = start + resultsPerPage;
   const currentResults = searchResults.slice(start, end);
 
-  useEffect(() => {
-    const start = (currentPage - 1) * resultsPerPage;
-    const end = start + resultsPerPage;
-    const currentResults = searchResults.slice(start, end);
-  }, [resultsPerPage, currentPage, searchResults]);
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
