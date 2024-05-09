@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HomeSearchDisplay = () => {
   const [query, setQuery] = useState("");
@@ -19,10 +19,21 @@ const HomeSearchDisplay = () => {
     }
   };
 
-  const allPages = Math.floor(searchResults.length / resultsPerPage);
+  const handleSearchButton = () => {
+    setCurrentPage(1);
+    handleSearch();
+  };
+
+  const allPages = Math.ceil(searchResults.length / resultsPerPage);
   const start = (currentPage - 1) * resultsPerPage;
   const end = start + resultsPerPage;
   const currentResults = searchResults.slice(start, end);
+
+  useEffect(() => {
+    const start = (currentPage - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    const currentResults = searchResults.slice(start, end);
+  }, [resultsPerPage, currentPage, searchResults]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -38,7 +49,7 @@ const HomeSearchDisplay = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="search_button" onClick={handleSearch}>
+        <button className="search_button" onClick={handleSearchButton}>
           <span className="search_emoji">&#128269;</span> Szukaj
         </button>
       </section>
@@ -107,7 +118,7 @@ const HomeSearchDisplay = () => {
             id="resultsPerPage"
             value={resultsPerPage}
             onChange={(e) => {
-              setResultsPerPage(e.target.value);
+              setResultsPerPage(parseInt(e.target.value));
               setCurrentPage(1);
             }}
           >
