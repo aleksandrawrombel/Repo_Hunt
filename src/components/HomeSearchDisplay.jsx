@@ -59,35 +59,45 @@ const HomeSearchDisplay = () => {
               <th>Ulubione</th>
             </tr>
           </thead>
-          <tbody>
-            {currentResults.map((result, index) => (
-              <tr key={index}>
-                <td>{result.id}</td>
-                <td>
-                  <a href={result.url} target="_blank" className="name_link">
-                    {result.name}
-                  </a>
-                </td>
-                <td>
-                  <div className="owner">
-                    <img
-                      src={result.owner.avatar_url}
-                      alt="avatar"
-                      className="avatar_owner"
-                    />
-                    <span>{result.owner.login}</span>
-                  </div>
-                </td>
-                <td>{result.stargazers_count}</td>
-                <td>{new Date(result.created_at).toLocaleDateString()}</td>
-                <td>
-                  <button className="favourites_button">
-                    Dodaj do ulubionych
-                  </button>
+          {allPages === 0 ? (
+            <tbody>
+              <tr>
+                <td colSpan="6" className="no_results">
+                  Brak wyników wyszukiwania
                 </td>
               </tr>
-            ))}
-          </tbody>
+            </tbody>
+          ) : (
+            <tbody>
+              {currentResults.map((result, index) => (
+                <tr key={index}>
+                  <td>{result.id}</td>
+                  <td>
+                    <a href={result.url} target="_blank" className="name_link">
+                      {result.name}
+                    </a>
+                  </td>
+                  <td>
+                    <div className="owner">
+                      <img
+                        src={result.owner.avatar_url}
+                        alt="avatar"
+                        className="avatar_owner"
+                      />
+                      <span>{result.owner.login}</span>
+                    </div>
+                  </td>
+                  <td>{result.stargazers_count}</td>
+                  <td>{new Date(result.created_at).toLocaleDateString()}</td>
+                  <td>
+                    <button className="favourites_button">
+                      Dodaj do ulubionych
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </section>
       <section className="pagination_container">

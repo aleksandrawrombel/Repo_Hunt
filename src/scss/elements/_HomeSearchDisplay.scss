@@ -79,6 +79,11 @@
   .favourites_button {
     @include button_yellow;
   }
+
+  .no_results {
+    vertical-align: middle;
+    text-align: center;
+  }
 }
 
 .pagination_container {
