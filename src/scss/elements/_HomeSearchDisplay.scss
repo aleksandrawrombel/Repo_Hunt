@@ -1,0 +1,30 @@
+.search_container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.search_bar {
+  width: 25rem;
+  background-color: transparent;
+  color: $color-whitish;
+  padding: 0.4rem 0.8rem;
+  border: solid 0.1rem $color-grayish;
+  border-radius: 0.3rem;
+}
+
+.search_button {
+  background-color: $color-yellow;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.5);
+  }
+
+  .search_emoji {
+    font-size: 0.8rem;
+  }
+}
