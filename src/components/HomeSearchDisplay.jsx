@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const HomeSearchDisplay = () => {
-    
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -32,8 +31,34 @@ const HomeSearchDisplay = () => {
           <span className="search_emoji">&#128269;</span> Szukaj
         </button>
       </section>
+      <div className="page_status">Strona 1 z 6</div>
       <section className="results_container">
-        
+        <table className="results_table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nazwa repozytorium</th>
+              <th>Właściciel</th>
+              <th>Ilość gwiazdek</th>
+              <th>Data utworzenia</th>
+              <th>Ulubione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12345678</td>
+              <td>link</td>
+              <td>icon text</td>
+              <td>stars</td>
+              <td>date</td>
+              <td>
+                <button className="favourites_button">
+                  Dodaj do ulubionych
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
     </main>
   );
