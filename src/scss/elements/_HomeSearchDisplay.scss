@@ -24,6 +24,7 @@
 .page_status {
   margin-top: 1rem;
   color: $color-yellow;
+  font-size: 1.3rem;
 }
 
 .results_table {
@@ -60,7 +61,7 @@
     font-weight: 300;
 
     .name_link {
-        color: $color-yellow;
+      color: $color-yellow;
     }
 
     .owner {
@@ -77,5 +78,40 @@
 
   .favourites_button {
     @include button_yellow;
+  }
+}
+
+.pagination_container {
+  margin-top: 2rem;
+  color: $color-whitish;
+
+  .pagination {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    label {
+      font-size: 1.3rem;
+    }
+
+    select {
+      width: 25rem;
+      background-color: transparent;
+      color: $color-whitish;
+      padding: 0.4rem 0.8rem;
+      border: solid 0.1rem $color-grayish;
+      border-radius: 0.3rem;
+    }
+  }
+
+  .pagination_buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+      @include button_yellow(0.7rem 0.8rem);
+    }
   }
 }

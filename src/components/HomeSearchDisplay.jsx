@@ -3,6 +3,7 @@ import { useState } from "react";
 const HomeSearchDisplay = () => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [resultsPerPage, setResultsPerPage] = useState(10);
 
   const handleSearch = async () => {
     try {
@@ -45,7 +46,7 @@ const HomeSearchDisplay = () => {
             </tr>
           </thead>
           <tbody>
-            {searchResults.map((result, index) => (
+            {searchResults.slice(0, resultsPerPage).map((result, index) => (
               <tr key={index}>
                 <td>{result.id}</td>
                 <td>
@@ -74,6 +75,25 @@ const HomeSearchDisplay = () => {
             ))}
           </tbody>
         </table>
+      </section>
+      <section className="pagination_container">
+        <div className="pagination">
+          <label htmlFor="resultsPerPage">Wyników na stronę:</label>
+          <select
+            id="resultsPerPage"
+            value={resultsPerPage}
+            onChange={(e) => setResultsPerPage(e.target.value)}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={30}>30</option>
+          </select>
+        </div>
+        <div className="pagination_buttons">
+          <button>Poprzednia</button>
+          <button>Następna</button>
+        </div>
       </section>
     </main>
   );

@@ -1,16 +1,11 @@
-@mixin button_yellow(
-  $bg-color: $color-yellow,
-  $text-color: $color-gray-dark,
-  $padding: 0.4rem 0.8rem,
-  $border: none,
-  $border-radius: 0.3rem
-) {
-  background-color: $bg-color;
-  color: $text-color;
+@mixin button_yellow($padding: 0.4rem 0.8rem) {
+  background-color: $color-yellow;
+  color: $color-gray-dark;
   padding: $padding;
-  border: $border;
-  border-radius: $border-radius;
+  border: none;
+  border-radius: 0.3rem;
   cursor: pointer;
+  transition: box-shadow 0.3s;
 
   &:hover {
     box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.5);
