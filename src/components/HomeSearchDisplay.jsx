@@ -4,6 +4,7 @@ const HomeSearchDisplay = () => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [resultsPerPage, setResultsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleSearch = async () => {
     try {
@@ -16,6 +17,15 @@ const HomeSearchDisplay = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const allPages = Math.floor(searchResults.length / resultsPerPage);
+  const start = (currentPage - 1) * resultsPerPage;
+  const end = start + resultsPerPage;
+  const currentResults = searchResults.slice(start, end);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -32,7 +42,11 @@ const HomeSearchDisplay = () => {
           <span className="search_emoji">&#128269;</span> Szukaj
         </button>
       </section>
-      <div className="page_status">Strona 1 z 6</div>
+      <div className="page_status">
+        {allPages === 0
+          ? `Strona ${currentPage} z -`
+          : `Strona ${currentPage} z ${allPages}`}
+      </div>
       <section className="results_container">
         <table className="results_table">
           <thead>
@@ -46,7 +60,7 @@ const HomeSearchDisplay = () => {
             </tr>
           </thead>
           <tbody>
-            {searchResults.slice(0, resultsPerPage).map((result, index) => (
+            {currentResults.map((result, index) => (
               <tr key={index}>
                 <td>{result.id}</td>
                 <td>
@@ -82,7 +96,10 @@ const HomeSearchDisplay = () => {
           <select
             id="resultsPerPage"
             value={resultsPerPage}
-            onChange={(e) => setResultsPerPage(e.target.value)}
+            onChange={(e) => {
+              setResultsPerPage(e.target.value);
+              setCurrentPage(1);
+            }}
           >
             <option value={5}>5</option>
             <option value={10}>10</option>
@@ -91,8 +108,18 @@ const HomeSearchDisplay = () => {
           </select>
         </div>
         <div className="pagination_buttons">
-          <button>Poprzednia</button>
-          <button>Następna</button>
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Poprzednia
+          </button>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === allPages || allPages === 0}
+          >
+            Następna
+          </button>
         </div>
       </section>
     </main>
