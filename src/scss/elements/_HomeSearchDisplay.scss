@@ -58,6 +58,21 @@
 
   td {
     font-weight: 300;
+
+    .name_link {
+        color: $color-yellow;
+    }
+
+    .owner {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .avatar_owner {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 2rem;
+    }
   }
 
   .favourites_button {

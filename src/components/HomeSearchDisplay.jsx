@@ -10,7 +10,7 @@ const HomeSearchDisplay = () => {
         `https://api.github.com/search/repositories?q=${query}`
       );
       const data = await response.json();
-      setSearchResults(data);
+      setSearchResults(data.items);
       console.log(searchResults);
     } catch (error) {
       console.error(error);
@@ -22,7 +22,7 @@ const HomeSearchDisplay = () => {
       <section className="search_container">
         <input
           className="search_bar"
-          placeholder="Search..."
+          placeholder="Nazwa repozytorium"
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -45,18 +45,33 @@ const HomeSearchDisplay = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>12345678</td>
-              <td>link</td>
-              <td>icon text</td>
-              <td>stars</td>
-              <td>date</td>
-              <td>
-                <button className="favourites_button">
-                  Dodaj do ulubionych
-                </button>
-              </td>
-            </tr>
+            {searchResults.map((result, index) => (
+              <tr key={index}>
+                <td>{result.id}</td>
+                <td>
+                  <a href={result.url} target="_blank" className="name_link">
+                    {result.name}
+                  </a>
+                </td>
+                <td>
+                  <div className="owner">
+                    <img
+                      src={result.owner.avatar_url}
+                      alt="avatar"
+                      className="avatar_owner"
+                    />
+                    <span>{result.owner.login}</span>
+                  </div>
+                </td>
+                <td>{result.stargazers_count}</td>
+                <td>{new Date(result.created_at).toLocaleDateString()}</td>
+                <td>
+                  <button className="favourites_button">
+                    Dodaj do ulubionych
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>
