@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const HomeHeader = () => {
+const FavouritesHeader = () => {
   return (
     <header className="container">
       <div className="header_nav">
@@ -17,9 +17,9 @@ const HomeHeader = () => {
           </li>
         </ul>
       </div>
-      <h1 className="home_hero_text">&#127968; Strona Główna</h1>
+      <h1 className="home_hero_text">&#11088; Ulubione</h1>
     </header>
   );
 };
 
-export default HomeHeader;
+export default FavouritesHeader;
