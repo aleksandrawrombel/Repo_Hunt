@@ -8,6 +8,7 @@
   border-left: $border-left;
   border-right: $border-right;
   border-bottom: $border-botton;
+  border-radius: 0.1rem;
 }
 
 @mixin arrow_yellow_down(
@@ -20,4 +21,5 @@
   border-left: $border-left;
   border-right: $border-right;
   border-top: $border-top;
+  border-radius: 0.1rem;
 }

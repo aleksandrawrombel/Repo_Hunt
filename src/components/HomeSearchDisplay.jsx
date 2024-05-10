@@ -100,6 +100,11 @@ const HomeSearchDisplay = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchButton();
+            }
+          }}
         />
         <button className="search_button" onClick={handleSearchButton}>
           <span className="search_emoji">&#128269;</span> Szukaj
@@ -196,7 +201,11 @@ const HomeSearchDisplay = () => {
                 <tr key={index}>
                   <td className="td_id">{result.id}</td>
                   <td>
-                    <a href={result.url} target="_blank" className="name_link">
+                    <a
+                      href={result.svn_url}
+                      target="_blank"
+                      className="name_link"
+                    >
                       {result.name}
                     </a>
                   </td>
@@ -211,7 +220,9 @@ const HomeSearchDisplay = () => {
                     </div>
                   </td>
                   <td>{result.stargazers_count}</td>
-                  <td className="td_created_at">{new Date(result.created_at).toLocaleDateString()}</td>
+                  <td className="td_created_at">
+                    {new Date(result.created_at).toLocaleDateString()}
+                  </td>
                   <td>
                     <button className="favourites_button">
                       Dodaj do ulubionych
@@ -225,7 +236,9 @@ const HomeSearchDisplay = () => {
       </section>
       <section className="pagination_container">
         <div className="pagination">
-          <label htmlFor="resultsPerPage" className="results_per_page">Wyników na stronę:</label>
+          <label htmlFor="resultsPerPage" className="results_per_page">
+            Wyników na stronę:
+          </label>
           <select
             id="resultsPerPage"
             value={resultsPerPage}
