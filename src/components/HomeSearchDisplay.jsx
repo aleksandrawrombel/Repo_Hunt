@@ -54,7 +54,6 @@ const HomeSearchDisplay = () => {
 
     if (sortConfig !== null) {
       sortableElements.sort((a, b) => {
-        
         // sorting for owner.login property
         if (sortConfig.key === "owner.login") {
           const aLogin = a.owner.login;
@@ -117,58 +116,68 @@ const HomeSearchDisplay = () => {
             <tr>
               <th>
                 ID
-                <span
-                  onClick={() => handleSorting("id")}
-                  className={
-                    getSortingDirection("id") === "ascending"
-                      ? "sorting_arrow_up"
-                      : "sorting_arrow_down"
-                  }
-                ></span>
+                {searchResults.length > 0 && (
+                  <span
+                    onClick={() => handleSorting("id")}
+                    className={
+                      getSortingDirection("id") === "ascending"
+                        ? "sorting_arrow_up"
+                        : "sorting_arrow_down"
+                    }
+                  ></span>
+                )}
               </th>
               <th>
                 Nazwa repozytorium
-                <span
-                  onClick={() => handleSorting("name")}
-                  className={
-                    getSortingDirection("name") === "ascending"
-                      ? "sorting_arrow_up"
-                      : "sorting_arrow_down"
-                  }
-                ></span>
+                {searchResults.length > 0 && (
+                  <span
+                    onClick={() => handleSorting("name")}
+                    className={
+                      getSortingDirection("name") === "ascending"
+                        ? "sorting_arrow_up"
+                        : "sorting_arrow_down"
+                    }
+                  ></span>
+                )}
               </th>
               <th>
                 Właściciel
-                <span
-                  onClick={() => handleSorting("owner.login")}
-                  className={
-                    getSortingDirection("owner.login") === "ascending"
-                      ? "sorting_arrow_up"
-                      : "sorting_arrow_down"
-                  }
-                ></span>
+                {searchResults.length > 0 && (
+                  <span
+                    onClick={() => handleSorting("owner.login")}
+                    className={
+                      getSortingDirection("owner.login") === "ascending"
+                        ? "sorting_arrow_up"
+                        : "sorting_arrow_down"
+                    }
+                  ></span>
+                )}
               </th>
               <th>
                 Ilość gwiazdek
-                <span
-                  onClick={() => handleSorting("stargazers_count")}
-                  className={
-                    getSortingDirection("stargazers_count") === "ascending"
-                      ? "sorting_arrow_up"
-                      : "sorting_arrow_down"
-                  }
-                ></span>
+                {searchResults.length > 0 && (
+                  <span
+                    onClick={() => handleSorting("stargazers_count")}
+                    className={
+                      getSortingDirection("stargazers_count") === "ascending"
+                        ? "sorting_arrow_up"
+                        : "sorting_arrow_down"
+                    }
+                  ></span>
+                )}
               </th>
               <th>
                 Data utworzenia
-                <span
-                  onClick={() => handleSorting("created_at")}
-                  className={
-                    getSortingDirection("created_at") === "ascending"
-                      ? "sorting_arrow_up"
-                      : "sorting_arrow_down"
-                  }
-                ></span>
+                {searchResults.length > 0 && (
+                  <span
+                    onClick={() => handleSorting("created_at")}
+                    className={
+                      getSortingDirection("created_at") === "ascending"
+                        ? "sorting_arrow_up"
+                        : "sorting_arrow_down"
+                    }
+                  ></span>
+                )}
               </th>
               <th>Ulubione</th>
             </tr>
