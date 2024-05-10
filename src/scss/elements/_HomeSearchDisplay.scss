@@ -55,6 +55,7 @@
 
   th {
     background-color: $color-gray-light;
+    position: relative;
   }
 
   td {
@@ -119,4 +120,18 @@
       @include button_yellow(0.7rem 0.8rem);
     }
   }
+}
+
+.sorting_arrow_up {
+  @include arrow_yellow_up;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.sorting_arrow_down {
+  @include arrow_yellow_down;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 }

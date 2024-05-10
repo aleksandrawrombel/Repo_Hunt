@@ -3,8 +3,13 @@ import { useState } from "react";
 const HomeSearchDisplay = () => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [sortConfig, setSortConfig] = useState({});
+
+  // fetching data
 
   const handleSearch = async () => {
     try {
@@ -13,7 +18,6 @@ const HomeSearchDisplay = () => {
       );
       const data = await response.json();
       setSearchResults(data.items);
-      console.log(searchResults);
     } catch (error) {
       console.error(error);
     }
@@ -24,10 +28,65 @@ const HomeSearchDisplay = () => {
     handleSearch();
   };
 
+  // table sorting
+
+  const handleSorting = (key) => {
+    let direction = "ascending";
+
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === "ascending"
+    ) {
+      direction = "descending";
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getSortingDirection = (key) => {
+    if (sortConfig.key === key) {
+      return sortConfig.direction;
+    }
+  };
+
+  const sortedElements = () => {
+    let sortableElements = [...searchResults];
+
+    if (sortConfig !== null) {
+      sortableElements.sort((a, b) => {
+        
+        // sorting for owner.login property
+        if (sortConfig.key === "owner.login") {
+          const aLogin = a.owner.login;
+          const BLogin = b.owner.login;
+
+          if (aLogin < BLogin) {
+            return sortConfig.direction === "ascending" ? -1 : 1;
+          }
+          if (aLogin > BLogin) {
+            return sortConfig.direction === "ascending" ? 1 : -1;
+          }
+
+          // sorting for the rest of properties
+        } else {
+          if (a[sortConfig.key] < b[sortConfig.key]) {
+            return sortConfig.direction === "ascending" ? -1 : 1;
+          }
+          if (a[sortConfig.key] > b[sortConfig.key]) {
+            return sortConfig.direction === "ascending" ? 1 : -1;
+          }
+        }
+      });
+    }
+    return sortableElements;
+  };
+
+  // pagination logic
+
   const allPages = Math.ceil(searchResults.length / resultsPerPage);
   const start = (currentPage - 1) * resultsPerPage;
   const end = start + resultsPerPage;
-  const currentResults = searchResults.slice(start, end);
+  const currentResults = sortedElements().slice(start, end);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -56,11 +115,61 @@ const HomeSearchDisplay = () => {
         <table className="results_table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nazwa repozytorium</th>
-              <th>Właściciel</th>
-              <th>Ilość gwiazdek</th>
-              <th>Data utworzenia</th>
+              <th>
+                ID
+                <span
+                  onClick={() => handleSorting("id")}
+                  className={
+                    getSortingDirection("id") === "ascending"
+                      ? "sorting_arrow_up"
+                      : "sorting_arrow_down"
+                  }
+                ></span>
+              </th>
+              <th>
+                Nazwa repozytorium
+                <span
+                  onClick={() => handleSorting("name")}
+                  className={
+                    getSortingDirection("name") === "ascending"
+                      ? "sorting_arrow_up"
+                      : "sorting_arrow_down"
+                  }
+                ></span>
+              </th>
+              <th>
+                Właściciel
+                <span
+                  onClick={() => handleSorting("owner.login")}
+                  className={
+                    getSortingDirection("owner.login") === "ascending"
+                      ? "sorting_arrow_up"
+                      : "sorting_arrow_down"
+                  }
+                ></span>
+              </th>
+              <th>
+                Ilość gwiazdek
+                <span
+                  onClick={() => handleSorting("stargazers_count")}
+                  className={
+                    getSortingDirection("stargazers_count") === "ascending"
+                      ? "sorting_arrow_up"
+                      : "sorting_arrow_down"
+                  }
+                ></span>
+              </th>
+              <th>
+                Data utworzenia
+                <span
+                  onClick={() => handleSorting("created_at")}
+                  className={
+                    getSortingDirection("created_at") === "ascending"
+                      ? "sorting_arrow_up"
+                      : "sorting_arrow_down"
+                  }
+                ></span>
+              </th>
               <th>Ulubione</th>
             </tr>
           </thead>
