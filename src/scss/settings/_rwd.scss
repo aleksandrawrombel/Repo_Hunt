@@ -1,0 +1,158 @@
+$medium-screen: 1000px;
+$medium-small-screen: 755px;
+$small-screen: 550px;
+
+@media (max-width: $medium-screen) {
+  .results_table {
+    th {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      line-height: 1.4rem;
+    }
+    td {
+      font-size: 1rem;
+      padding: 0.5rem;
+      line-height: 1rem;
+    }
+  }
+
+  .sorting_arrow_up {
+    @include arrow_yellow_up(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.3rem;
+    right: 0.3rem;
+  }
+
+  .sorting_arrow_down {
+    @include arrow_yellow_down(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.3rem;
+    right: 0.3rem;
+  }
+}
+
+@media (max-width: $medium-small-screen) {
+  .results_table {
+    th {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      line-height: 1.6rem;
+    }
+    td {
+      font-size: 1rem;
+      padding: 0.5rem;
+      line-height: 1rem;
+    }
+  }
+
+  .th_id,
+  .td_id {
+    display: none;
+  }
+
+  .sorting_arrow_up {
+    @include arrow_yellow_up(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.3rem;
+    right: 0.3rem;
+  }
+
+  .sorting_arrow_down {
+    @include arrow_yellow_down(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.3rem;
+    right: 0.3rem;
+  }
+}
+
+@media (max-width: $small-screen) {
+  .home_hero_text {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 2rem;
+  }
+
+  .search_bar {
+    width: 15rem;
+  }
+
+  .search_emoji {
+    display: none;
+  }
+
+  .page_status {
+    font-size: 1rem;
+  }
+
+  .results_table {
+    th {
+      font-size: 0.7rem;
+      padding: 0.2rem;
+      line-height: 1rem;
+    }
+
+    td {
+      font-size: 0.7rem;
+      padding: 0.2rem;
+      line-height: 1rem;
+    }
+  }
+
+  .th_id,
+  .td_id,
+  .avatar_owner,
+  .th_created_at,
+  .td_created_at {
+    display: none;
+  }
+
+  .sorting_arrow_up {
+    @include arrow_yellow_up(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.2rem;
+    right: 0.2rem;
+  }
+
+  .sorting_arrow_down {
+    @include arrow_yellow_down(
+      0.3rem solid transparent,
+      0.3rem solid transparent,
+      0.5rem solid $color-yellow
+    );
+    bottom: 0.2rem;
+    right: 0.2rem;
+  }
+
+  .favourites_button {
+    font-size: 0.6rem;
+  }
+
+  .pagination_container {
+    .pagination {
+      label {
+        font-size: 1rem;
+      }
+    }
+
+    .pagination_buttons {
+      button {
+        @include button_yellow(0.5rem 0.6rem);
+      }
+    }
+  }
+}

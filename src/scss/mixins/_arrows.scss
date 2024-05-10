@@ -1,15 +1,23 @@
-@mixin arrow_yellow_up {
+@mixin arrow_yellow_up(
+  $border-left: 0.5rem solid transparent,
+  $border-right: 0.5rem solid transparent,
+  $border-botton: 1rem solid $color-yellow
+) {
   width: 0;
   height: 0;
-  border-left: 0.5rem solid transparent;
-  border-right: 0.5rem solid transparent;
-  border-bottom: 1rem solid $color-yellow;
+  border-left: $border-left;
+  border-right: $border-right;
+  border-bottom: $border-botton;
 }
 
-@mixin arrow_yellow_down {
+@mixin arrow_yellow_down(
+  $border-left: 0.5rem solid transparent,
+  $border-right: 0.5rem solid transparent,
+  $border-top: 1rem solid $color-yellow
+) {
   width: 0;
   height: 0;
-  border-left: 0.5rem solid transparent;
-  border-right: 0.5rem solid transparent;
-  border-top: 1rem solid $color-yellow;
+  border-left: $border-left;
+  border-right: $border-right;
+  border-top: $border-top;
 }

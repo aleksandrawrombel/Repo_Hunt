@@ -114,7 +114,7 @@ const HomeSearchDisplay = () => {
         <table className="results_table">
           <thead>
             <tr>
-              <th>
+              <th className="th_id">
                 ID
                 {searchResults.length > 0 && (
                   <span
@@ -166,7 +166,7 @@ const HomeSearchDisplay = () => {
                   ></span>
                 )}
               </th>
-              <th>
+              <th className="th_created_at">
                 Data utworzenia
                 {searchResults.length > 0 && (
                   <span
@@ -194,7 +194,7 @@ const HomeSearchDisplay = () => {
             <tbody>
               {currentResults.map((result, index) => (
                 <tr key={index}>
-                  <td>{result.id}</td>
+                  <td className="td_id">{result.id}</td>
                   <td>
                     <a href={result.url} target="_blank" className="name_link">
                       {result.name}
@@ -211,7 +211,7 @@ const HomeSearchDisplay = () => {
                     </div>
                   </td>
                   <td>{result.stargazers_count}</td>
-                  <td>{new Date(result.created_at).toLocaleDateString()}</td>
+                  <td className="td_created_at">{new Date(result.created_at).toLocaleDateString()}</td>
                   <td>
                     <button className="favourites_button">
                       Dodaj do ulubionych
@@ -225,7 +225,7 @@ const HomeSearchDisplay = () => {
       </section>
       <section className="pagination_container">
         <div className="pagination">
-          <label htmlFor="resultsPerPage">Wyników na stronę:</label>
+          <label htmlFor="resultsPerPage" className="results_per_page">Wyników na stronę:</label>
           <select
             id="resultsPerPage"
             value={resultsPerPage}
