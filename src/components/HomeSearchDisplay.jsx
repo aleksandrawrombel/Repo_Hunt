@@ -59,10 +59,26 @@ const HomeSearchDisplay = () => {
           const aLogin = a.owner.login;
           const BLogin = b.owner.login;
 
-          if (aLogin < BLogin) {
+          if (aLogin.toLowerCase() < BLogin.toLowerCase()) {
             return sortConfig.direction === "ascending" ? -1 : 1;
           }
-          if (aLogin > BLogin) {
+          if (aLogin.toLowerCase() > BLogin.toLowerCase()) {
+            return sortConfig.direction === "ascending" ? 1 : -1;
+          }
+
+          // sorting for string properties
+        } else if (
+          typeof a[sortConfig.key] === "string" ||
+          typeof b[sortConfig.key] === "string"
+        ) {
+          if (
+            a[sortConfig.key].toLowerCase() < b[sortConfig.key].toLowerCase()
+          ) {
+            return sortConfig.direction === "ascending" ? -1 : 1;
+          }
+          if (
+            a[sortConfig.key].toLowerCase() > b[sortConfig.key].toLowerCase()
+          ) {
             return sortConfig.direction === "ascending" ? 1 : -1;
           }
 
