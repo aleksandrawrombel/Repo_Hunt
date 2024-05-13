@@ -11,8 +11,8 @@ const Home = () => {
 
   const [sortConfig, setSortConfig] = useState({});
 
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("items")) || []
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem("favourites")) || []
   );
 
   // fetching data
@@ -115,17 +115,17 @@ const Home = () => {
 
   // localStorage
 
-  const addToLocalStorage = (item) => {
-    const updatedItems = [...items, item];
-    setItems(updatedItems);
-    localStorage.setItem("items", JSON.stringify(updatedItems));
+  const addToLocalStorage = (favourite) => {
+    const updatedFavourites = [...favourites, favourite];
+    setFavourites(updatedFavourites);
+    localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
   };
 
   useEffect(() => {
     localStorage.setItem("query", query);
     localStorage.setItem("searchResults", JSON.stringify(searchResults));
-    localStorage.setItem("items", JSON.stringify(items));
-  }, [query, searchResults, items]);
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites, searchResults, query]);
 
   return (
     <main className="container">

@@ -11,3 +11,5 @@ kolejne strony rozpoczynaly odpowiednim elementem - obliczenie początku i końc
 3. Sortowanie kolumny owner.login - osobna logika sortowania tej kolumny.
 
 4. Utrzymywanie wyszukiwania przy zmianie route'a - Home 'resetował' się i wymazywał ostatnie wyszukiwanie. Podobnie z Favourites - dodałam pobieranie i zapisywanie stanu wyszukiwania i ulubionych z/w localStorage.
+
+5. Prosty cache? Pobieranie danych zapisanych w localStorage w przypadku ponownego wyszukiwania hasła, tak zeby nie odpytywać ponownie API? Na ile powinna być zapisana "sesja" z localStorage, tak zeby uzytkownik miał dostęp do najnowszych danych?

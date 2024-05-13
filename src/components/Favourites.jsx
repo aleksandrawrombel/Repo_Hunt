@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Favourites = () => {
   const [localStorageData, setLocalStorageData] = useState(
-    JSON.parse(localStorage.getItem("items")) || []
+    JSON.parse(localStorage.getItem("favourites")) || []
   );
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("items"));
-    setLocalStorageData(items);
+    const favourites = JSON.parse(localStorage.getItem("favourites"));
+    setLocalStorageData(favourites);
   }, []);
 
   return (
@@ -17,7 +17,10 @@ const Favourites = () => {
       <ul>
         {localStorageData.map((item, index) => {
           return (
-            <Link key={index}>
+            <Link
+              key={index}
+              to={`/favourites/:${item.id}`}
+            >
               <li className="favourites_link">{item.name}</li>
             </Link>
           );
