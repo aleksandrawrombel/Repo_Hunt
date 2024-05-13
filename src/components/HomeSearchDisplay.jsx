@@ -123,6 +123,7 @@ const HomeSearchDisplay = () => {
 
   return (
     <main className="container">
+      <h1 className="home_hero_text">&#127968; Strona Główna</h1>
       <section className="search_container">
         <input
           className="search_bar"

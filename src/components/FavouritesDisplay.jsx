@@ -11,6 +11,7 @@ const FavouritesDisplay = () => {
 
   return (
     <section className="container favourites_container">
+      <h1 className="home_hero_text">&#11088; Ulubione</h1>
       <ul>
         {localStorageData.map((item, index) => {
           return (
