@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [query, setQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [query, setQuery] = useState(localStorage.getItem("query") || "");
+  const [searchResults, setSearchResults] = useState(
+    JSON.parse(localStorage.getItem("searchResults")) || []
+  );
 
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [sortConfig, setSortConfig] = useState({});
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items")) || []
+  );
 
   // fetching data
 
@@ -118,8 +122,10 @@ const Home = () => {
   };
 
   useEffect(() => {
+    localStorage.setItem("query", query);
+    localStorage.setItem("searchResults", JSON.stringify(searchResults));
     localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
+  }, [query, searchResults, items]);
 
   return (
     <main className="container">

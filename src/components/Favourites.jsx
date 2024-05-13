@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Favourites = () => {
-  const [localStorageData, setLocalStorageData] = useState([]);
+  const [localStorageData, setLocalStorageData] = useState(
+    JSON.parse(localStorage.getItem("items")) || []
+  );
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("items"));
