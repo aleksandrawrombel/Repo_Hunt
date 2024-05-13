@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HomeSearchDisplay = () => {
   const [query, setQuery] = useState("");
@@ -8,6 +8,8 @@ const HomeSearchDisplay = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [sortConfig, setSortConfig] = useState({});
+
+  const [items, setItems] = useState([]);
 
   // fetching data
 
@@ -106,6 +108,18 @@ const HomeSearchDisplay = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // localStorage
+
+  const addToLocalStorage = (item) => {
+    const updatedItems = [...items, item];
+    setItems(updatedItems);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   return (
     <main className="container">
@@ -240,7 +254,10 @@ const HomeSearchDisplay = () => {
                     {new Date(result.created_at).toLocaleDateString()}
                   </td>
                   <td>
-                    <button className="favourites_button">
+                    <button
+                      className="favourites_button"
+                      onClick={() => addToLocalStorage(result)}
+                    >
                       Dodaj do ulubionych
                     </button>
                   </td>
@@ -273,12 +290,18 @@ const HomeSearchDisplay = () => {
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
+            className={currentPage === 1 ? "pagination_button_disabled" : ""}
           >
             Poprzednia
           </button>
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === allPages || allPages === 0}
+            className={
+              currentPage === allPages || allPages === 0
+                ? "pagination_button_disabled"
+                : ""
+            }
           >
             Następna
           </button>

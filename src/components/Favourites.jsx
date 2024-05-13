@@ -1,7 +1,13 @@
 import FavouritesHeader from "./FavouritesHeader";
+import FavouritesDisplay from "./FavouritesDisplay";
 
 const Favourites = () => {
-  return <FavouritesHeader />;
+  return (
+    <>
+      <FavouritesHeader />
+      <FavouritesDisplay />
+    </>
+  );
 };
 
 export default Favourites;

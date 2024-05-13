@@ -119,6 +119,16 @@
     button {
       @include button_yellow(0.7rem 0.8rem);
     }
+
+    .pagination_button_disabled {
+      background-color: $color-grayish;
+
+      &:hover {
+        transition: none;
+        box-shadow: none;
+        cursor: default;
+      }
+    }
   }
 }
 
