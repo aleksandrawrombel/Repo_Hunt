@@ -138,6 +138,19 @@ const Home = () => {
     localStorage.setItem("addedFavourite", JSON.stringify(addedFavourite));
   }, [favourites, searchResults, query, addedFavourite]);
 
+  // clear localStorage
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.clear();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <main className="container">
       <h1 className="home_hero_text">&#127968; Strona Główna</h1>
