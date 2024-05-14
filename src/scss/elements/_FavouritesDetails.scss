@@ -1,3 +1,42 @@
 .favourites_details_container {
   color: $color-whitish;
+
+  .favourites_details_name {
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  .favourites_details_owner {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .favourites_details_avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+  }
+
+  .favourites_details_description {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .favourites_details_url {
+    margin-top: 2rem;
+
+    a {
+      color: $color-yellow;
+      text-decoration: underline;
+      text-decoration-color: $color-yellow;
+    }
+  }
+
+  p {
+    margin-top: 0.5rem;
+  }
+}
+
+.favourites_details_loading {
+  font-size: 2rem;
 }

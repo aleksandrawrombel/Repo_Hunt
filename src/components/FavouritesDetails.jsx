@@ -19,7 +19,7 @@ const FavouritesDetails = () => {
 
   if (!favourite) {
     return (
-      <section className="container favourites_details_container">
+      <section className="container favourites_details_container favourites_details_loading">
         <p>Loading...</p>
       </section>
     );
@@ -28,18 +28,26 @@ const FavouritesDetails = () => {
   return (
     <>
       <section className="container favourites_details_container">
-        <h1>
-          {`${favourite.name} by `} <span>{favourite.owner.login}</span>{" "}
-          <img src={favourite.owner.avatar_url} alt="avatar" />
+        <h1 className="favourites_details_name">
+          {favourite.name}{" "}
+          <span className="favourites_details_owner">{`by ${favourite.owner.login}`}</span>{" "}
+          <img
+            src={favourite.owner.avatar_url}
+            alt="avatar"
+            className="favourites_details_avatar"
+          />
         </h1>
-        <p>{favourite.description}</p>
-        <p>
-          <a href={favourite.svn_url} target="_blank" className="name_link">
+        <p className="favourites_details_description">
+          {favourite.description}
+        </p>
+        <p className="favourites_details_url">
+          &#128279; {""}
+          <a href={favourite.svn_url} target="_blank">
             URL
           </a>
         </p>
-        <p>{idNumber}</p>
-        <p>{new Date(favourite.created_at).toLocaleDateString()}</p>
+        <p>&#11088; {favourite.stargazers_count}</p>
+        <p>&#127874; {new Date(favourite.created_at).toLocaleDateString()}</p>
       </section>
     </>
   );
