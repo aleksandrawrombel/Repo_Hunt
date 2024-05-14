@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -15,7 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/favourites/:id" element={<FavouritesDetails />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
       </BrowserRouter>
     </>
