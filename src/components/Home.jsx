@@ -6,6 +6,12 @@ const Home = () => {
     JSON.parse(localStorage.getItem("searchResults")) || []
   );
 
+  const [cache, setCache] = useState(
+    JSON.parse(localStorage.getItem("cache")) || {
+      queries: {},
+    }
+  );
+
   const [resultsPerPage, setResultsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,6 +33,9 @@ const Home = () => {
       );
       const data = await response.json();
       setSearchResults(data.items);
+
+      handleCache(query, data.items);
+      // console.log("API req sent");
     } catch (error) {
       console.error(error);
     }
@@ -34,7 +43,14 @@ const Home = () => {
 
   const handleSearchButton = () => {
     setCurrentPage(1);
-    handleSearch();
+
+    const cachedQueries = Object.keys(cache.queries);
+    if (cachedQueries.includes(query)) {
+      const searchedQuery = cache.queries[query];
+      setSearchResults(searchedQuery);
+    } else {
+      handleSearch();
+    }
   };
 
   // table sorting
@@ -63,6 +79,7 @@ const Home = () => {
 
     if (sortConfig !== null) {
       sortableElements.sort((a, b) => {
+
         // sorting for owner.login property
         if (sortConfig.key === "owner.login") {
           const aLogin = a.owner.login;
@@ -136,7 +153,9 @@ const Home = () => {
     localStorage.setItem("searchResults", JSON.stringify(searchResults));
     localStorage.setItem("favourites", JSON.stringify(favourites));
     localStorage.setItem("addedFavourite", JSON.stringify(addedFavourite));
-  }, [favourites, searchResults, query, addedFavourite]);
+
+    localStorage.setItem("cache", JSON.stringify(cache));
+  }, [favourites, searchResults, query, addedFavourite, cache]);
 
   // clear localStorage
 
@@ -150,6 +169,18 @@ const Home = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+
+  // simple cache
+
+  const handleCache = (newQuery, newSearchResult) => {
+    const updatedCache = {
+      ...cache,
+      queries: { ...cache.queries, [newQuery]: newSearchResult },
+    };
+
+    setCache(updatedCache);
+    localStorage.setItem("cache", JSON.stringify(updatedCache));
+  };
 
   return (
     <main className="container">
