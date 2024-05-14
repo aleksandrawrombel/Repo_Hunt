@@ -14,6 +14,9 @@ const Home = () => {
   const [favourites, setFavourites] = useState(
     JSON.parse(localStorage.getItem("favourites")) || []
   );
+  const [addedFavourite, setAddedFavourite] = useState(
+    JSON.parse(localStorage.getItem("addedFavourite")) || {}
+  );
 
   // fetching data
 
@@ -119,13 +122,21 @@ const Home = () => {
     const updatedFavourites = [...favourites, favourite];
     setFavourites(updatedFavourites);
     localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
+
+    const updatedAddedFavourites = { ...addedFavourite, [favourite.id]: true };
+    setAddedFavourite(updatedAddedFavourites);
+    localStorage.setItem(
+      "addedFavourite",
+      JSON.stringify(updatedAddedFavourites)
+    );
   };
 
   useEffect(() => {
     localStorage.setItem("query", query);
     localStorage.setItem("searchResults", JSON.stringify(searchResults));
     localStorage.setItem("favourites", JSON.stringify(favourites));
-  }, [favourites, searchResults, query]);
+    localStorage.setItem("addedFavourite", JSON.stringify(addedFavourite));
+  }, [favourites, searchResults, query, addedFavourite]);
 
   return (
     <main className="container">
@@ -262,10 +273,17 @@ const Home = () => {
                   </td>
                   <td>
                     <button
-                      className="favourites_button"
+                      className={
+                        addedFavourite[result.id]
+                          ? "favourites_button_added"
+                          : "favourites_button"
+                      }
                       onClick={() => addToLocalStorage(result)}
+                      disabled={addedFavourite[result.id]}
                     >
-                      Dodaj do ulubionych
+                      {addedFavourite[result.id]
+                        ? "Dodano do ulubionych"
+                        : "Dodaj do ulubionych"}
                     </button>
                   </td>
                 </tr>

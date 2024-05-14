@@ -81,6 +81,10 @@
     @include button_yellow;
   }
 
+  .favourites_button_added {
+    @include button_gray;
+  }
+
   .no_results {
     vertical-align: middle;
     text-align: center;
