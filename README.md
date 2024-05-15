@@ -1,12 +1,12 @@
 # Reposzukiwacz - Repo Hunt
 App designed for a technical interview simulation at CodersLab.
 
-# uwagi/problemy:
+# uwagi/problemy (notowane podczas wykonywania zadania):
 
 1. Odpowiednie wyświetlanie elementów przy paginacji - tak, zeby
 kolejne strony rozpoczynaly odpowiednim elementem - obliczenie początku i końca wyświetlanych elementów na danej stronie. 
 
-2. Wyświetlanie odpowiedniej ilości wyników po przejściu przez kolejne strony paginacji. 
+2. Wyświetlanie odpowiedniej ilości wyników po przejściu przez kolejne strony paginacji, zgodnie z wybirem uzytkownika. 
 
 3. Sortowanie kolumny owner.login - osobna logika sortowania tej kolumny.
 
@@ -16,4 +16,4 @@ kolejne strony rozpoczynaly odpowiednim elementem - obliczenie początku i końc
 
 5. Prosty cache - pobieranie danych zapisanych w localStorage w przypadku ponownego wyszukiwania hasła, tak zeby nie odpytywać ponownie API. Na ile powinna być zapisana "sesja" z localStorage, tak zeby uzytkownik miał dostęp do najnowszych danych? Co jeśli nie odswiezy strony przez dluzszy czas i dane będą pobierane tylko z localStorage w przypadku powielonych queries?
 
-5.1 Zerowanie cache'a - localStorage.removeItem dla kazdego klucza nie zadziałało, podobnie samo localStorage.clear(), komponent unmount przy zmianie route'a - znalazłam beforeunload (?) czy eventlistiners tutaj będą okej czy juz za bardzo skomplikowalam?
+5.1 Zerowanie cache'a - localStorage.removeItem dla kazdego klucza nie zadziałało, podobnie samo localStorage.clear(); komponent unmount przy zmianie route'a - znalazłam beforeunload (?) czy eventlistiners tutaj będą okej czy juz za bardzo skomplikowalam?
