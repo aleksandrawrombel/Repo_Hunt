@@ -26,3 +26,5 @@ _Created for coding practice and technical review simulation, based on a project
  * [GitHub API](https://docs.github.com/en/rest?apiVersion=2022-11-28)
 
 ### Badge:
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/48103df4-f6f1-4856-bb61-f685006f1061/deploy-status)](https://app.netlify.com/sites/reposzukiwacz/deploys)
