@@ -1,19 +1,28 @@
-# Reposzukiwacz - Repo Hunt
-App designed for a technical interview simulation at CodersLab.
+# Repo Hunt (PL reposzukiwacz)
+### A Polish app where users can search through GitHub repsitories and save their favourites to a personalized list. 
+_Created for coding practice and technical review simulation, based on a project developed by CodersLab._
+### This application was designed to seamlessly search through GitHub repositories using their API. Users can easily save their favorite repositories to a list and sort the repository table according to their preferences. Additionally, it features a responsive design for optimal user experience across devices.
 
-# uwagi/problemy (notowane podczas wykonywania zadania):
+### Link to the website - 
 
-1. Odpowiednie wyświetlanie elementów przy paginacji - tak, zeby
-kolejne strony rozpoczynaly odpowiednim elementem - obliczenie początku i końca wyświetlanych elementów na danej stronie. 
+### Snippets:
+<p align="center">
+<img src="https://github.com/aleksandrawrombel/reposzukiwacz/assets/128837261/30950973-1604-4831-9fee-5775df6d4853"/>
+<img src="https://github.com/aleksandrawrombel/reposzukiwacz/assets/128837261/2bf6e9d4-ab05-4fd1-8fe4-0267edffdfb7"/>
+<img src="https://github.com/aleksandrawrombel/reposzukiwacz/assets/128837261/0b769848-9cc2-4c02-92f4-8d9b17163e78"/>
+<img src="https://github.com/aleksandrawrombel/reposzukiwacz/assets/128837261/4e67cbc7-5d7b-43fa-ae90-9c2d91d110ab"/>
+</p>
 
-2. Wyświetlanie odpowiedniej ilości wyników po przejściu przez kolejne strony paginacji, zgodnie z wybirem uzytkownika. 
+### Technologies:
 
-3. Sortowanie kolumny owner.login - osobna logika sortowania tej kolumny.
+  * React
+  * JavaScript
+  * HTML
+  * CSS
+  * Sass
 
-4. Utrzymywanie wyszukiwania przy zmianie route'a - Home 'resetował' się i wymazywał ostatnie wyszukiwanie. Podobnie z Favourites - dodałam pobieranie i zapisywanie stanu wyszukiwania i ulubionych z/w localStorage.
+### API:
 
-4.1 Podobny problem przy utrzymaniu stanu button'a po dodaniu do ulubionych, dane zapisane i pobierane z localStorage i na tej podstawie utrzymywany stan button'a.
+ * [GitHub API](https://docs.github.com/en/rest?apiVersion=2022-11-28)
 
-5. Prosty cache - pobieranie danych zapisanych w localStorage w przypadku ponownego wyszukiwania hasła, tak zeby nie odpytywać ponownie API. Na ile powinna być zapisana "sesja" z localStorage, tak zeby uzytkownik miał dostęp do najnowszych danych? Co jeśli nie odswiezy strony przez dluzszy czas i dane będą pobierane tylko z localStorage w przypadku powielonych queries?
-
-5.1 Zerowanie cache'a - localStorage.removeItem dla kazdego klucza nie zadziałało, podobnie samo localStorage.clear(); komponent unmount przy zmianie route'a - znalazłam beforeunload (?) czy eventlistiners tutaj będą okej czy juz za bardzo skomplikowalam?
+### Badge:
