@@ -3,7 +3,7 @@
 _Created for coding practice and technical review simulation, based on a project developed by CodersLab._
 ### This application was designed to seamlessly search through GitHub repositories using their API. Users can easily save their favorite repositories to a list and sort the repository table according to their preferences. Additionally, it features a responsive design for optimal user experience across devices.
 
-### Link to the website - 
+### Link to the website - https://reposzukiwacz.netlify.app/
 
 ### Snippets:
 <p align="center">
