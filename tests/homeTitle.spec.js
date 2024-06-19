@@ -1,7 +1,7 @@
 import { Builder, Browser } from "selenium-webdriver";
 import assert from 'assert';
 
-async function homeTest() {
+async function homeTitleTest() {
   let driver;
 
   try {
@@ -19,4 +19,4 @@ async function homeTest() {
   }
 }
 
-homeTest();
+homeTitleTest();
