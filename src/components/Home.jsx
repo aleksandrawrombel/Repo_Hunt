@@ -218,8 +218,8 @@ const Home = () => {
                     onClick={() => handleSorting("id")}
                     className={
                       getSortingDirection("id") === "ascending"
-                        ? "sorting_arrow_up"
-                        : "sorting_arrow_down"
+                        ? "sorting_arrow_up id_arrow_up"
+                        : "sorting_arrow_down id_arrow_down"
                     }
                   ></span>
                 )}
